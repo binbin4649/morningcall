@@ -1,6 +1,6 @@
 <!-- BaserPageTagBegin -->
-<?php $this->BcBaser->setTitle('baserCMS') ?>
-<?php $this->BcBaser->setDescription('') ?>
+<?php $this->BcBaser->setTitle('baserCMSテーマ ratio_3_2') ?>
+<?php $this->BcBaser->setDescription('ratio_3_2テーマは、個人事業主・小規模店舗向けに、不要な機能を取り払い、コンテンツと更新の負荷軽減を考慮したテーマです。テーマ内のすべての画像が3：2で統一されています。') ?>
 <?php $this->BcBaser->setPageEditLink(1) ?>
 <style>
 .mainvisual .jumbotron .h1,
