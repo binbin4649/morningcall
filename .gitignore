@@ -16,7 +16,6 @@ app/webroot/js/admin
 app/tmp/*
 !app/tmp/empty
 app/View/pages/
-app/webroot/theme/*
 !app/webroot/theme/empty
 app/webroot/sitemap.xml
 nbproject/
