@@ -3,6 +3,7 @@
 .vscode
 app/Config/database.php
 app/Config/install.php
+app/Config/bootstrap.php
 app/db/*
 !app/db/empty
 app/Plugin/*
