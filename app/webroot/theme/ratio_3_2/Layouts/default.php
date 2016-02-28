@@ -21,7 +21,7 @@
 <?php $this->BcBaser->css(array(
 'bootstrap.min',
 'font-awesome.min',
-'style.min',
+'style',
 )) ?>
 <?php $this->BcBaser->js(array(
 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
@@ -120,7 +120,7 @@ if ( $this->BcBaser->isHome() ):
 
 			<div class="row-2col">
 				<div class="col-main">
-
+					<?php $this->BcBaser->element('crumbs_list'); ?>
 					<div class="widget-area-wrapper">
 					<?php
 						// widget: common top No.6
@@ -151,7 +151,6 @@ if ( $this->BcBaser->isHome() ):
 
 						<div class="entry-footer">
 							<?php $this->BcBaser->element('contents_navi'); ?>
-							<?php $this->BcBaser->element('crumbs_list'); ?>
 						<!-- /.entry-footer --></div>
 
 					</article>
