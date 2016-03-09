@@ -23,10 +23,12 @@ if ( empty($menuType) ) {
 		</div>
 
 		<?php
+		if(empty($user)) $user = '';
 		$args = array(
 			'ul_class' => 'nav nav-pills nav-justified',
 			'li_class' => null,
 			'active_class' => 'active',
+			'user' => $user,
 		);
 		echo $this->Ratio32->get_global_menu( $args ); 
 		?>

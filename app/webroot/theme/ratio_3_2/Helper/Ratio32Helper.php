@@ -118,6 +118,13 @@ class Ratio32Helper extends BcBaserHelper {
 
 			foreach ($global_menus as $key => $global_menu) {
 
+				if($args['user'] && $global_menu['Menu']['no'] == '10'){
+					continue;
+				}
+				if(!$args['user'] && $global_menu['Menu']['no'] == '11'){
+					continue;
+				}
+
 				if ( $global_menu['Menu']['status'] ) {
 					$classies = array();
 
@@ -134,7 +141,6 @@ class Ratio32Helper extends BcBaserHelper {
 						$classies[] = $args['active_class'];
 					}
 					$class = ' class="' . implode( ' ', $classies ) . '"';
-
 					if (!Configure::read('BcRequest.agent') && $this->base == '/index.php' && $global_menu['Menu']['link'] == '/') {
 						$output .= '<li' . $class . '>';
 						$output .= str_replace('/index.php', '', $this->getLink($global_menu['Menu']['name'], $global_menu['Menu']['link']));
