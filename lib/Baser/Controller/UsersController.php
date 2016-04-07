@@ -217,8 +217,12 @@ class UsersController extends AppController {
 	public function setAuthCookie($data) {
 		$userModel = $this->BcAuth->authenticate['Form']['userModel'];
 		$cookie = array();
-		$cookie['name'] = $data[$userModel]['name'];
-		$cookie['password'] = $data[$userModel]['password'];							// ハッシュ化されている
+		foreach($data[$userModel] as $key => $val) {
+			// savedは除外
+			if ($key !== "saved") {
+				$cookie[$key] = $val;
+			}
+		}
 		$this->Cookie->write(Inflector::camelize(str_replace('.', '', BcAuthComponent::$sessionKey)), $cookie, true, '+2 weeks');	// 3つめの'true'で暗号化
 	}
 
@@ -491,10 +495,12 @@ class UsersController extends AppController {
  * @return void
  */
 	public function admin_reset_password() {
-		if (empty($this->params['prefix']) && !Configure::read('BcAuthPrefix.front')) {
+		if ((empty($this->params['prefix']) && !Configure::read('BcAuthPrefix.front'))) {
 			$this->notFound();
 		}
-
+		if($this->BcAuth->user()) {
+			$this->redirect(array('controller' => 'dashboard', 'action' => 'index'));
+		}
 		$this->pageTitle = 'パスワードのリセット';
 		$userModel = $this->BcAuth->authenticate['Form']['userModel'];
 		if ($this->request->data) {
