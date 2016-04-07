@@ -374,10 +374,12 @@ class Message extends MailAppModel {
 		// バリデートグループにおけるデータ２つを比較し、違えばエラーとする
 		foreach ($dists as $key => $dist) {
 			list($a, $b) = $dist;
-			if ($a != $b) {
-				$this->invalidate($key . '_not_same');
-				$this->invalidate($key . '_1');
-				$this->invalidate($key . '_2');
+			if(count($dist) == 2){
+				if ($a != $b) {
+					$this->invalidate($key . '_not_same');
+					$this->invalidate($key . '_1');
+					$this->invalidate($key . '_2');
+				}
 			}
 		}
 	}
@@ -399,11 +401,12 @@ class Message extends MailAppModel {
 			}
 
 			$value = null;
-			if(!empty($data['Message'][$mailField['field_name']])) {
+			if(isset($data['Message'][$mailField['field_name']]) &&
+				$data['Message'][$mailField['field_name']] !== "") {
 				$value = $data['Message'][$mailField['field_name']];
 			}
 
-			if ($value) {
+			if ($value !== null) {
 
 				// 半角処理
 				if ($mailField['auto_convert'] == 'CONVERT_HANKAKU') {
