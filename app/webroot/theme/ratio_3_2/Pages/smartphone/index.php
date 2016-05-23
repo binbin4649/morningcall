@@ -1,7 +1,7 @@
 <!-- BaserPageTagBegin -->
 <?php $this->BcBaser->setTitle('') ?>
 <?php $this->BcBaser->setDescription('') ?>
-<?php $this->BcBaser->setPageEditLink(7) ?>
+<?php $this->BcBaser->setPageEditLink(6) ?>
 <!-- BaserPageTagEnd -->
 
 <div id="news" class="clearfix">
