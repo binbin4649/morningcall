@@ -9,71 +9,6 @@ class McCalltime extends AppModel {
 
 	//public $belongsTo = 'User';
 
-	//使ってない
-	public function saveEveryday($lastday, $month, $data, $user_id){
-        $result = true;
-		for($i = 1; $i <= $lastday; $i++){
-			$result = $this->saveCalltime($month.$i, $data, $user_id);
-		}
-		return $result;
-	}
-	
-	//使ってない 
-	public function saveWeekday($lastday, $yearmonth, $data, $user_id){
-		$result = true;
-		$today_month = date('Ym', mktime(0, 0, 0, date('m') + 1, 0, date('Y')));
-		//$today_month = date('Ym', mktime(0, 0, 0, date('m'), 0, date('Y')));
-		$today = (int)date('j');
-		$year = substr($yearmonth, 0, 4);
-		$month = substr($yearmonth, 4, 2);
-		for($i = 1; $i <= $lastday; $i++){
-			$datetime = date_create();
-		    date_date_set($datetime, $year, $month, $i);
-		    $w = (int)date_format($datetime, 'w');
-		    $judg = true;
-		    if($w == 0 or $w == 6) $judg = false;
-		    $nationalHoliday = $this->nationalHoliday();
-		    foreach($nationalHoliday as $key=>$value){
-		    	if($key == $yearmonth.$i) $judg = false;
-		    }
-		    if($yearmonth == $today_month){
-		    	if($i < $today) $judg = false;
-		    }
-		    if($judg){
-		    	$result = $this->saveCalltime($yearmonth.$i, $data, $user_id);	
-		    } 
-		}
-		return $result;
-	}
-
-	//使ってない
-	public function saveHoliday($lastday, $yearmonth, $data, $user_id){
-		$result = true;
-		$today_month = date('Ym', mktime(0, 0, 0, date('m') + 1, 0, date('Y')));
-		//$today_month = date('Ym', mktime(0, 0, 0, date('m'), 0, date('Y')));
-		$today = (int)date('j');
-		$year = substr($yearmonth, 0, 4);
-		$month = substr($yearmonth, 4, 2);
-		for($i = 1; $i <= $lastday; $i++){
-			$datetime = date_create();
-		    date_date_set($datetime, $year, $month, $i);
-		    $w = (int)date_format($datetime, 'w');
-		    $judg = false;
-		    if($w == 0 or $w == 6) $judg = true;
-		    $nationalHoliday = $this->nationalHoliday();
-		    foreach($nationalHoliday as $key=>$value){
-		    	if($key == $yearmonth.$i) $judg = true;
-		    }
-		    if($yearmonth == $today_month){
-		    	if($i < $today) $judg = false;
-		    }
-		    if($judg){
-		    	$result = $this->saveCalltime($yearmonth.$i, $data, $user_id);	
-		    } 
-		}
-		return $result;
-	}
-
 	public function bulkSave($lastday, $yearmonth, $weekday_data, $holiday_data, $user_id){
 		$today_month = date('Ym', mktime(0, 0, 0, date('m') + 1, 0, date('Y')));
 		$today = (int)date('j');
@@ -166,15 +101,15 @@ class McCalltime extends AppModel {
         $Userinfo = new Userinfo;
 		$calltime = $this->find('first', array(
 			'conditions' => array(
-				"Calltime.user_id" => $user_id,
-				"Calltime.date" => $date,
+				"McCalltime.user_id" => $user_id,
+				"McCalltime.date" => $date,
 			),
 			'recursive' => -1
 		));
 		$return = 0;
 		$juge = true;
-		if(!empty($calltime['Calltime']['call_time'])){
-			if($calltime['Calltime']['call_time'] >= 1){
+		if(!empty($calltime['McCalltime']['call_time'])){
+			if($calltime['McCalltime']['call_time'] >= 1){
 				$juge = false;
 			}
 		}
@@ -321,9 +256,9 @@ class McCalltime extends AppModel {
 	public function unexecuted($user_id){
 		$calltimes = $this->find('all', array(
 			'conditions' => array(
-				"Calltime.user_id" => $user_id,
-				"Calltime.run" => 0,
-				"Calltime.call_time" => 0,
+				"McCalltime.user_id" => $user_id,
+				"McCalltime.run" => 0,
+				"McCalltime.call_time" => 0,
 			),
 			'recursive' => -1
 		));
@@ -488,9 +423,9 @@ class McCalltime extends AppModel {
 		return $status;
 	}
 
-	public function findReserve2($user_id, $year, $month){
+	public function DetailReserve($user_id, $year, $month){
 		$calltimes = $this->find('all', array(
-			'conditions' => array("Calltime.user_id" => $user_id, "Calltime.date LIKE" => $year.$month.'%'),
+			'conditions' => array("McCalltime.user_id" => $user_id, "McCalltime.date LIKE" => $year.$month.'%'),
 			'recursive' => 1
 		));
 		foreach($calltimes as $key=>$calltime){

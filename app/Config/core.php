@@ -440,3 +440,8 @@ if (file_exists(APP . 'Config' . DS . 'install.php')) {
 	include_once APP . 'Config' . DS . 'install.php';
 }
 // <<<
+
+/** ここからオリジナル **/
+
+
+
