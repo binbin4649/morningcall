@@ -1,7 +1,7 @@
 <!-- BaserPageTagBegin -->
 <?php $this->BcBaser->setTitle('サイトマップ') ?>
 <?php $this->BcBaser->setDescription('baserCMS inc.のサイトマップページ') ?>
-<?php $this->BcBaser->setPageEditLink(10) ?>
+<?php $this->BcBaser->setPageEditLink(9) ?>
 <!-- BaserPageTagEnd -->
 
 <h2 class="contents-head">サイトマップ</h2>

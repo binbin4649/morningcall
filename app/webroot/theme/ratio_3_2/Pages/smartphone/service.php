@@ -1,7 +1,7 @@
 <!-- BaserPageTagBegin -->
 <?php $this->BcBaser->setTitle('サービス') ?>
 <?php $this->BcBaser->setDescription('baserCMS inc.のサービス紹介ページ。') ?>
-<?php $this->BcBaser->setPageEditLink(9) ?>
+<?php $this->BcBaser->setPageEditLink(8) ?>
 <!-- BaserPageTagEnd -->
 
 <h2 class="contents-head">サービス</h2>

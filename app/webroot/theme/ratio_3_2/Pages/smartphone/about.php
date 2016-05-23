@@ -1,7 +1,7 @@
 <!-- BaserPageTagBegin -->
 <?php $this->BcBaser->setTitle('会社案内') ?>
 <?php $this->BcBaser->setDescription('baserCMS inc.の会社案内ページ') ?>
-<?php $this->BcBaser->setPageEditLink(8) ?>
+<?php $this->BcBaser->setPageEditLink(7) ?>
 <!-- BaserPageTagEnd -->
 
 <h2 class="contents-head">会社案内</h2>
@@ -18,5 +18,5 @@ WEBシステム開発事業（ダミー）</td></tr>
 </div>
 <h3 class="contents-head">アクセスマップ</h3>
 <div class="section">
-<?php $this->BcBaser->element("googlemaps", array("width" => 585)) ?>
+<?php $this->BcBaser->googleMaps(array("width" => 585)) ?>
 </div>

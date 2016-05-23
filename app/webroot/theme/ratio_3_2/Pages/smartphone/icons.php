@@ -1,7 +1,7 @@
 <!-- BaserPageTagBegin -->
 <?php $this->BcBaser->setTitle('アイコンの使い方') ?>
 <?php $this->BcBaser->setDescription('50種類のアイコンを自由にカスタマイズしよう。') ?>
-<?php $this->BcBaser->setPageEditLink(11) ?>
+<?php $this->BcBaser->setPageEditLink(10) ?>
 <!-- BaserPageTagEnd -->
 
 <h2>
